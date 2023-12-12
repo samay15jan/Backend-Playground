@@ -1,37 +1,32 @@
-require('dotenv').config()
+import dotenv from 'dotenv'
+import ConnectDB from "./db/database.js";
 
-const express = require('express')
+dotenv.config({
+    path:  './env'
+})
 
+ConnectDB()
+
+/*
+import express from "./express";
 const app = express()
 
-const port = process.env.PORT || 3000
+//Ifee function [Directly Runs] [ syntax = "()()" ]
+;(async () => {
+    try {
+        await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
+        app.on("ERROR", (error) => {
+            console.log("Error: ", error);
+            throw err
+        })
 
-app.get('/api/jokes', (req, res) => {
-    const jokes = [
-        {
-            id: "001",
-            title: "Joke 1",
-            content: "This is joke 1"
-        },
-        {
-            id: "002",
-            title: "Joke 2",
-            content: "This is joke 2"
-        },
-        {
-            id: "003",
-            title: "Joke 3",
-            content: "This is joke 3"
-        },
-        {
-            id: "004",
-            title: "Joke 4",
-            content: "This is joke 4"
-        }
-    ];
-    res.send(jokes);
-})
+        app.listen(process.env.PORT, () => {
+            console.log(`App is listening at ${process.env.PORT}`);
+        })
 
-app.listen(port, () => {
-    console.log(`Listening at https://localhost:${port}`)
-})
+    } catch (error) {
+        console.log("Error: ", error)
+        throw err
+    }
+})()
+*/
